@@ -1,0 +1,5 @@
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="*057E:2006*", MODE="0666"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="*057E:2007*", MODE="0666"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", KERNELS=="*057E:2009*", MODE="0666"
+# 兜底：匹配 057e 厂商的任意 hidraw
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="057e", MODE="0666"

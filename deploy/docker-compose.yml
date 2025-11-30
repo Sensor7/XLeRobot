@@ -1,0 +1,23 @@
+services:
+  xlerobot:
+    image: xlerobot:latest
+    container_name: xlerobot
+    volumes:
+      - /dev:/dev
+      - ../software:/root/ws/software
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/tmp/.docker.xauth
+      - GIT_LFS_SKIP_SMUDGE=1
+
+    device_cgroup_rules:
+      - 'c 241:* rmw'
+    restart: no
+    privileged: true
+    network_mode: host
+    env_file: .env
+    stdin_open: true
+    tty: true
+    command: bash
+# docker build -t xlerobot:latest -f deploy/Dockerfile .
